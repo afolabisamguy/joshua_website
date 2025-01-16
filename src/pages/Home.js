@@ -11,26 +11,14 @@ import { CursorContext } from "../context/CursorContext";
 
 const Home = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
-  const isMobile = window.innerWidth <= 768;
 
-  React.useEffect(() => {
-    if (isMobile) {
-      document.body.style.overflowY = "scroll";
-    } else {
-      document.body.style.overflowY = "hidden";
-    }
-
-    return () => {
-      document.body.style.overflowY = "hidden";
-    };
-  }, [isMobile]);
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={transition1}
-      className="section "
+      className="section h-screen overflow-hidden md:h-auto md:overflow-auto"
     >
       <div className="container mx-auto h-full relative">
         {/* text & img wrapper */}
