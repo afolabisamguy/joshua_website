@@ -11,7 +11,19 @@ import { CursorContext } from "../context/CursorContext";
 
 const Home = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  const isMobile = window.innerWidth <= 768;
 
+  React.useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflowY = "scroll";
+    } else {
+      document.body.style.overflowY = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflowY = "hidden";
+    };
+  }, [isMobile]);
   return (
     <motion.section
       initial={{ opacity: 0 }}
